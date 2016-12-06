@@ -190,8 +190,10 @@ void moveServo() {
   float po2 = (float(servoPos2) / 180.) * 2. * PI;
   float phase1 = (cnt / 100.) * 2. * PI * (servoFreq1 / 45.);
   float phase2 = (cnt / 100.) * 2. * PI * (servoFreq2 / 45.);
-  int cp1 = (sin(phase1 + po1) + 1) * (servoAmp1/2); // degrees
-  int cp2 = (sin(phase2 + po2) + 1) * (servoAmp2/2); // degrees
+  // int cp1 = (sin(phase1 + po1) + 1) * (servoAmp1/2); // degrees
+  // int cp2 = (sin(phase2 + po2) + 1) * (servoAmp2/2); // degrees
+  int cp1 = (sin(phase1 + po1) * servoAmp1 * 0.5) + 90; // degrees
+  int cp2 = (sin(phase2 + po2) * servoAmp2 * 0.5) + 90; // degrees
 //  if (servoPos1 != newServoPos1) {
 //    servoPos1 = newServoPos1;
 //    myServo1.write(servoPos1);
